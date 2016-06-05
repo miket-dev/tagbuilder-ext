@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc.Extensions.Template;
 
 namespace System.Web.Mvc.Extensions
@@ -10,8 +7,12 @@ namespace System.Web.Mvc.Extensions
     public class HtmlFactory : ElementFactory
     {
         #region Fields
+        /// <summary>
+        /// inner factories
+        /// </summary>
         private List<HtmlElementFactory> _elementFactories;
         #endregion
+
         #region Contructors
         public HtmlFactory()
         {
@@ -20,6 +21,9 @@ namespace System.Web.Mvc.Extensions
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Adds an element builder factory for required tag name
+        /// </summary>
         public HtmlElementFactory Add(string tagName)
         {
             var elementFactory = new HtmlElementFactory(tagName);
@@ -28,6 +32,9 @@ namespace System.Web.Mvc.Extensions
             return elementFactory;
         }
 
+        /// <summary>
+        /// Produces result in MvcHtmlString
+        /// </summary>
         public override MvcHtmlString ToMvcHtmlString()
         {
             var result = string.Empty;

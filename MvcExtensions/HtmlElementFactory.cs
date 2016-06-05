@@ -23,6 +23,9 @@ namespace System.Web.Mvc.Extensions
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Sets a markup for inner items
+        /// </summary>
         public HtmlElementFactory Inner(Action<HtmlFactory> configurator)
         {
             configurator(this._innerFactory);
@@ -30,6 +33,9 @@ namespace System.Web.Mvc.Extensions
             return this;
         }
 
+        /// <summary>
+        /// Sets attributes for tag
+        /// </summary>
         public HtmlElementFactory Attributes(object attributes)
         {
             foreach (var prop in attributes.GetType().GetProperties())
@@ -40,6 +46,9 @@ namespace System.Web.Mvc.Extensions
             return this;
         }
 
+        /// <summary>
+        /// Sets attributes for tag
+        /// </summary>
         public HtmlElementFactory Attributes(IDictionary<string, string> attributes)
         {
             foreach (var item in attributes)
@@ -50,18 +59,27 @@ namespace System.Web.Mvc.Extensions
             return this;
         }
 
+        /// <summary>
+        /// adds class name for tag
+        /// </summary>
         public HtmlElementFactory Class(string className)
         {
             this._tagBuilder.AddCssClass(className);
             return this;
         }
 
+        /// <summary>
+        /// adds style directive for tag
+        /// </summary>
         public HtmlElementFactory Style(string name, string value)
         {
             this._tagBuilder.MergeAttribute("style", string.Format("{0}:{1};", name, value), false);
             return this;
         }
 
+        /// <summary>
+        /// sets the `name` attribute of tag
+        /// </summary>
         public HtmlElementFactory Name(string name)
         {
             this._tagBuilder.MergeAttribute("name", name, true);
@@ -69,6 +87,9 @@ namespace System.Web.Mvc.Extensions
             return this;
         }
 
+        /// <summary>
+        /// sets inner text for tag
+        /// </summary>
         public HtmlElementFactory Text(string text)
         {
             this._tagBuilder.SetInnerText(text);
