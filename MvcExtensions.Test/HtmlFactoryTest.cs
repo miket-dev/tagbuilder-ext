@@ -66,27 +66,6 @@ namespace MvcExtensions.Test
                 });
 
             Assert.AreEqual("<div><div></div></div>", this._htmlFactory.ToString());
-
-
-            this._htmlFactory.Add("div")
-                .Style("display", "block")
-                .Class("base-item")
-                .Inner(elements =>
-                {
-                    elements.Add("span")
-                        .Class("header")
-                        .Text("Header");
-                    elements.Add("div")
-                        .Class("subheader")
-                        .Inner(inner =>
-                        {
-                            inner.Add("span")
-                                .Class("subheader-content")
-                                .Text("SubHeader");
-                        });
-                });
-
-            var result = this._htmlFactory.ToString();
         }
     }
 }
