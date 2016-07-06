@@ -92,7 +92,7 @@ namespace System.Web.Mvc.Extensions
         /// </summary>
         public HtmlElementFactory Text(string text)
         {
-            this._tagBuilder.SetInnerText(text);
+            this._tagBuilder.InnerHtml = text;
 
             return this;
         }
